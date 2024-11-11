@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c7eb745-e64c-4b2d-b668-e556fafd87d3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Kino/Motion/Shader/Common.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/../../Kino/Motion/Shader/Common.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OVR/Moonlight/Shaders/OVRColorRampAlpha.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../OVR/Moonlight/Shaders/OVRColorRampAlpha.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OVR/Moonlight/Shaders/Unlit Crosshair.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../OVR/Moonlight/Shaders/Unlit Crosshair.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/GLLine.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/GLLine.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/Gizmo Line.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/Gizmo Line.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/Gizmo Solid Component.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/Gizmo Solid Component.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/Gradient Camera Bk.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/Gradient Camera Bk.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/XZGrid.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../Runtime Transform Gizmos/Resources/Shaders/XZGrid.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Steamworks.NET.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Steamworks.NET.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CallbackDispatcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CallbackDispatcher.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CallbackIdentity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CallbackIdentity.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISteamMatchmakingResponses.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISteamMatchmakingResponses.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteropHelp.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InteropHelp.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packsize.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packsize.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Steam.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Steam.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/NativeMethods.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/NativeMethods.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamCallbacks.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamCallbacks.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamConstants.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamConstants.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamEnums.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamEnums.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamStructs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/SteamStructs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamapplist.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamapplist.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamapps.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamapps.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamclient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamclient.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamcontroller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamcontroller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamfriends.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamfriends.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserver.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverhttp.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverhttp.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverinventory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverinventory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameservernetworking.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameservernetworking.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverstats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverstats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverugc.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverugc.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverutils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamgameserverutils.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamhtmlsurface.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamhtmlsurface.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamhttp.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamhttp.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteaminventory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteaminventory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteammatchmaking.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteammatchmaking.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteammusic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteammusic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteammusicremote.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteammusicremote.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamnetworking.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamnetworking.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamremotestorage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamremotestorage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamscreenshots.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamscreenshots.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamugc.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamugc.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamunifiedmessages.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamunifiedmessages.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamuser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamuser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamuserstats.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamuserstats.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamutils.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamutils.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamvideo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autogen/isteamvideo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redist.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redist/steam_appid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/redist/steam_appid.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/MatchmakingTypes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/MatchmakingTypes/gameserveritem_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/MatchmakingTypes/gameserveritem_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/MatchmakingTypes/servernetadr_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/MatchmakingTypes/servernetadr_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/HSteamPipe.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/HSteamPipe.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/HSteamUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/HSteamUser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/SteamAPIWarningMessageHook_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/SteamAPIWarningMessageHook_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/SteamAPI_CheckCallbackRegistered_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/SteamAPI_CheckCallbackRegistered_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/SteamAPI_PostAPIResultInProcess_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClient/SteamAPI_PostAPIResultInProcess_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic/CGameID.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic/CGameID.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic/CSteamID.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic/CSteamID.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic/HAuthTicket.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamClientPublic/HAuthTicket.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamFriends.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamFriends/FriendsGroupID_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamFriends/FriendsGroupID_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTMLSurface.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTMLSurface/HHTMLBrowser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTMLSurface/HHTMLBrowser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTTP.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTTP/HTTPCookieContainerHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTTP/HTTPCookieContainerHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTTP/HTTPRequestHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamHTTP/HTTPRequestHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory/SteamInventoryResult_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory/SteamInventoryResult_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory/SteamItemDef_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory/SteamItemDef_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory/SteamItemInstanceID_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamInventory/SteamItemInstanceID_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamMatchmaking.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamMatchmaking/HServerListRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamMatchmaking/HServerListRequest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamMatchmaking/HServerQuery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamMatchmaking/HServerQuery.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamNetworking.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamNetworking/SNetListenSocket_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamNetworking/SNetListenSocket_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamNetworking/SNetSocket_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamNetworking/SNetSocket_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/PublishedFileId_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/PublishedFileId_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/PublishedFileUpdateHandle_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/PublishedFileUpdateHandle_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/UGCFileWriteStreamHandle_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/UGCFileWriteStreamHandle_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/UGCHandle_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamRemoteStorage/UGCHandle_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamScreenshots.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamScreenshots/ScreenshotHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamScreenshots/ScreenshotHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/AccountID_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/AccountID_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/AppId_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/AppId_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/DepotId_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/DepotId_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/ManifestId_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/ManifestId_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/SteamAPICall_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamTypes/SteamAPICall_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUGC.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUGC/UGCQueryHandle_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUGC/UGCQueryHandle_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUGC/UGCUpdateHandle_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUGC/UGCUpdateHandle_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUnifiedMessages.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUnifiedMessages/ClientUnifiedMessageHandle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUnifiedMessages/ClientUnifiedMessageHandle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUserStats.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUserStats/SteamLeaderboardEntries_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUserStats/SteamLeaderboardEntries_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUserStats/SteamLeaderboard_t.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/SteamUserStats/SteamLeaderboard_t.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/Spawnpoints/spawnpoint-texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/Spawnpoints/spawnpoint-texture.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/Atmosphere/AtmosphericFog.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/Atmosphere/AtmosphericFog.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/BlitTransparent.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/BlitTransparent.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/CGIncludes/TerrainSplatmapCommon.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/CGIncludes/TerrainSplatmapCommon.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/GeometryFader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/GeometryFader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/Particles_AdditiveClipSafe.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/Particles_AdditiveClipSafe.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/ScreenFader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/ScreenFader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/SkyboxCustom.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/SkyboxCustom.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/Terrain/Standard-FirstPass-Custom.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/Terrain/Standard-FirstPass-Custom.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/UI/UI-Outline.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/UI/UI-Outline.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/UI/UI-Unlit-Text-Hdr.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/UI/UI-Unlit-Text-Hdr.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Shaders/UnlitTransparent.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Shaders/UnlitTransparent.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/AmbientOcclusion/Resources/AmbientOcclusion.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/AmbientOcclusion/Resources/AmbientOcclusion.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/AntiAliasing/FXAA/Resources/FXAA.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/AntiAliasing/FXAA/Resources/FXAA.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/AntiAliasing/SMAA/Resources/SMAA.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/AntiAliasing/SMAA/Resources/SMAA.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/Bloom/Resources/Bloom.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/Bloom/Resources/Bloom.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/DepthOfField/Resources/BokehSplatting.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/DepthOfField/Resources/BokehSplatting.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/DepthOfField/Resources/DepthOfField.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/DepthOfField/Resources/DepthOfField.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/DepthOfField/Resources/MedianFilter.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/DepthOfField/Resources/MedianFilter.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/GlassRefraction/Shaders/GlassStainedBumpDistort.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/GlassRefraction/Shaders/GlassStainedBumpDistort.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/BlendModesOverlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/BlendModesOverlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/BlurEffectConeTaps.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/BlurEffectConeTaps.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/CameraMotionBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/CameraMotionBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/CameraMotionBlurDX11.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/CameraMotionBlurDX11.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ChromaticAberrationShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ChromaticAberrationShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrection3DLut.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrection3DLut.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrectionCurves.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrectionCurves.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrectionCurvesSimple.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrectionCurvesSimple.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrectionSelective.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ColorCorrectionSelective.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/Contrast Stretch/Apply.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/Contrast Stretch/Apply.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/Contrast Stretch/MinMaxReduction.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/Contrast Stretch/MinMaxReduction.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ContrastComposite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ContrastComposite.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ConvertDepth.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ConvertDepth.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/CreaseApply.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/CreaseApply.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/EdgeDetectNormals.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/EdgeDetectNormals.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/FisheyeShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/FisheyeShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/GlobalFog.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/GlobalFog.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/MotionBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/MotionBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/MotionBlurClear.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/MotionBlurClear.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseAndGrain.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseAndGrain.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseAndGrainDX11.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseAndGrainDX11.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseEffectShaderRGB.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseEffectShaderRGB.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseEffectShaderYUV.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/NoiseEffectShaderYUV.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/PrepareSunShaftsBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/PrepareSunShaftsBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/RadialBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/RadialBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/SSAOShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/SSAOShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ScreenSpaceAmbientObscurance.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ScreenSpaceAmbientObscurance.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ShowAlphaChannel.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/ShowAlphaChannel.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/SimpleClear.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/SimpleClear.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/SunShaftsComposite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/SunShaftsComposite.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/Tonemapper.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/Tonemapper.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/TwirlEffect.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/TwirlEffect.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/VignettingShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/VignettingShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/VortexEffect.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/VortexEffect.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/DLAA.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/DLAA.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAA2.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAA2.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAA3Console.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAA3Console.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAAPreset2.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAAPreset2.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAAPreset3.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/FXAAPreset3.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/NFAA.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/NFAA.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/SSAA.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_Antialiasing/SSAA.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/Blend.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/Blend.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendForBloom.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendForBloom.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendOneOne.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendOneOne.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlurAndFlares.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlurAndFlares.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter2.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter2.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/LensFlareCreate.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/LensFlareCreate.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBloom.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBloom.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MultiPassHollywoodFlares.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MultiPassHollywoodFlares.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/SeparableBlurPlus.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/SeparableBlurPlus.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/VignetteShader.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/VignetteShader.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/DepthOfField34.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/DepthOfField34.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/DepthOfFieldDX11.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/DepthOfFieldDX11.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/DepthOfFieldScatter.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/DepthOfFieldScatter.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/SeparableBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/SeparableBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/SeparableWeightedBlurDof34.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/SeparableWeightedBlurDof34.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/TiltShiftHdrLensBlur.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ImageEffects/Shaders/_DepthOfField/TiltShiftHdrLensBlur.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/LensAberrations/Resources/LensAberrations.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/LensAberrations/Resources/LensAberrations.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/Projectors/Shaders/ProjectorLight.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/Projectors/Shaders/ProjectorLight.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/Projectors/Shaders/ProjectorMultiply.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/Projectors/Shaders/ProjectorMultiply.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ScreenSpaceReflection/Resources/ScreenSpaceReflection.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ScreenSpaceReflection/Resources/ScreenSpaceReflection.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/TonemappingColorGrading/Resources/HistogramRender.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/TonemappingColorGrading/Resources/HistogramRender.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ToonShading/Shaders/ToonBasic.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ToonShading/Shaders/ToonBasic.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Standard Assets/Effects/ToonShading/Shaders/ToonBasicOutline.shader" beforeDir="false" afterPath="$PROJECT_DIR$/../../Standard Assets/Effects/ToonShading/Shaders/ToonBasicOutline.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/icons/copy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/icons/copy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/icons/delete.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/icons/delete.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/icons/edit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/icons/edit.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/icons/slow-motion.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/icons/slow-motion.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/icons/white-circle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/icons/white-circle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/logos/facebook.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/logos/facebook.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/logos/twitter.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/logos/twitter.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/logos/unity-logo-white.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/logos/unity-logo-white.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/logos/unity-logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/logos/unity-logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Textures/UI/sponsors/creative-industries-fund.gif.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../Textures/UI/sponsors/creative-industries-fund.gif.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/ProjectVersion.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../RamjetAnvil/DataCursor/TypedDataCursor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/travi/Dev/VoloAirsport/VoloAirsport/Assets/Plugins/RamjetAnvil/DataCursor/TypedDataCursor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../RamjetAnvil/ExtensibleInputModule/Scripts/CursorInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../RamjetAnvil/ExtensibleInputModule/Scripts/Cursors/MouseCursor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../RamjetAnvil/Ramnet/Core/Replication/ReplicatedObjectStore.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2of6ZwOLxCP5Tr4zdjazvIJIIR4" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/travi/Dev/VoloAirsport/VoloAirsport",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c7eb745-e64c-4b2d-b668-e556fafd87d3" name="Changes" comment="" />
+      <created>1731248342074</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731248342074</updated>
+      <workItem from="1731248343633" duration="529000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
