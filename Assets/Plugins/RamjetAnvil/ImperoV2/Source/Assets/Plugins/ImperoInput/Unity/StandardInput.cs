@@ -95,7 +95,7 @@ namespace RamjetAnvil.Impero.StandardInput {
         ///     Taken from: http://www.third-helix.com/2013/04/doing-thumbstick-dead-zones-right/
         ///     , and https://gist.github.com/stfx/5372176
         /// </summary>
-        public static Func<Vector2, Vector2> StickDeadzone(float deadzone) {
+        public static System.Func<Vector2, Vector2> StickDeadzone(float deadzone) {
             return stickInput => {
                 float inputMagnitude = stickInput.magnitude;
 
@@ -218,7 +218,7 @@ namespace RamjetAnvil.Impero.StandardInput {
         }
 
         public static Func<TInput, TOutput> StatefulAdapter<TInput, TOutput, TState>(
-            Func<TState, TInput, Tuple<TOutput, TState>> adapter, 
+            Func<TState, TInput, RamjetAnvil.Unity.Utility.Tuple<TOutput, TState>> adapter, 
             TState initialState) {
 
             TState state = initialState;
@@ -239,9 +239,9 @@ namespace RamjetAnvil.Impero.StandardInput {
                     }
 
                     if (buttonPressDuration >= holdDuration) {
-                        return new Tuple<ButtonState, TimeSpan>(ButtonState.Pressed, buttonPressDuration);
+                        return new RamjetAnvil.Unity.Utility.Tuple<ButtonState, TimeSpan>(ButtonState.Pressed, buttonPressDuration);
                     }
-                    return new Tuple<ButtonState, TimeSpan>(ButtonState.Released, buttonPressDuration);
+                    return new RamjetAnvil.Unity.Utility.Tuple<ButtonState, TimeSpan>(ButtonState.Released, buttonPressDuration);
                 },
                 TimeSpan.Zero);
         }
@@ -253,7 +253,7 @@ namespace RamjetAnvil.Impero.StandardInput {
                     // TODO Simplify!
 
                     if (input == ButtonState.Pressed) {
-                        return new Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Released, holdTimestamp.IsJust ? holdTimestamp : Maybe.Just(currentTime()));
+                        return new RamjetAnvil.Unity.Utility.Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Released, holdTimestamp.IsJust ? holdTimestamp : Maybe.Just(currentTime()));
                     } else if (input == ButtonState.Released) {
                         Maybe<TimeSpan> holdDuration;
                         if (holdTimestamp.IsJust) {
@@ -263,11 +263,11 @@ namespace RamjetAnvil.Impero.StandardInput {
                         }
 
                         if (holdDuration.IsJust && holdDuration.Value <= maxholdDuration) {
-                            return new Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Pressed, Maybe<TimeSpan>.Nothing);
+                            return new RamjetAnvil.Unity.Utility.Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Pressed, Maybe<TimeSpan>.Nothing);
                         }
-                        return new Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Released, Maybe<TimeSpan>.Nothing);
+                        return new RamjetAnvil.Unity.Utility.Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Released, Maybe<TimeSpan>.Nothing);
                     }
-                    return new Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Released, Maybe<TimeSpan>.Nothing);
+                    return new RamjetAnvil.Unity.Utility.Tuple<ButtonState, Maybe<TimeSpan>>(ButtonState.Released, Maybe<TimeSpan>.Nothing);
                 },
                 Maybe.Nothing<TimeSpan>());
         }
