@@ -77,7 +77,8 @@ namespace RamjetAnvil.Landmass {
 
         [SerializeField] private bool _initializeSelf;
 
-        private JobManager _jobManager;
+        // FIXME TRAVIS JobManager is commented out
+        // private JobManager _jobManager;
         private BinaryReader _terrainReader;
 
         private QuadTree<GrassPatch> _tree;
@@ -95,10 +96,11 @@ namespace RamjetAnvil.Landmass {
         private Vector3 _predictedSubjectPosition;
         private IntVector3 _lastPatch;
 
-        private Func<object, ICancelToken, object> _loadTerrainFunc;
-        private Func<object, ICancelToken, object> _generateMeshFunc;
-        private Func<object, ICancelToken, object> _completeMeshFunc;
-        private Action<Job> _onJobCanceled;
+        // FIXME TRAVIS JobManager is commented out
+        // private Func<object, ICancelToken, object> _loadTerrainFunc;
+        // private Func<object, ICancelToken, object> _generateMeshFunc;
+        // private Func<object, ICancelToken, object> _completeMeshFunc;
+        // private Action<Job> _onJobCanceled;
 
         private TraversalData _traversalData;
 
@@ -137,14 +139,15 @@ namespace RamjetAnvil.Landmass {
             _lastSubjectVelocity = Vector3.zero;
         }
 
-        private void Awake() {
-            _loadTerrainFunc = LoadTerrainData;
-            _generateMeshFunc = GenerateMesh;
-            _completeMeshFunc = CompleteLoad;
-            _onJobCanceled = OnJobCanceled;
-
-            _jobManager = gameObject.AddComponent<JobManager>();
-        }
+        // FIXME TRAVIS JobManager is commented out
+        // private void Awake() {
+        //     _loadTerrainFunc = LoadTerrainData;
+        //     _generateMeshFunc = GenerateMesh;
+        //     _completeMeshFunc = CompleteLoad;
+        //     _onJobCanceled = OnJobCanceled;
+        //
+        //     _jobManager = gameObject.AddComponent<JobManager>();
+        // }
 
         private void Start() {
             _nodeStreamingVisitor = TraverseAndStream;
@@ -384,161 +387,163 @@ namespace RamjetAnvil.Landmass {
 
             node.SnowAltitude = _terrain.TerrainConfiguration.SnowAltitude;
 
-            var job = _jobManager.CreateJob(node)
-                .AddTask(_loadTerrainFunc, JobTaskType.AsyncIo)
-                .AddTask(_generateMeshFunc, JobTaskType.Async)
-                .AddTask(_completeMeshFunc, JobTaskType.UnityThread)
-                .OnCancel(_onJobCanceled);
+            // FIXME TRAVIS JobManager is commented out
+            // var job = _jobManager.CreateJob(node)
+            //     .AddTask(_loadTerrainFunc, JobTaskType.AsyncIo)
+            //     .AddTask(_generateMeshFunc, JobTaskType.Async)
+            //     .AddTask(_completeMeshFunc, JobTaskType.UnityThread)
+            //     .OnCancel(_onJobCanceled);
+            //
+            // var disposeJob = _jobManager.StartJob(job);
+            // node.RunningJob = disposeJob;
 
-            var disposeJob = _jobManager.StartJob(job);
-            node.RunningJob = disposeJob;
-
+            // TODO TRAVIS: Since JobManager is commented out, what should this status be
             node.State = NodeState.Loading;
 
             UnityEngine.Profiling.Profiler.EndSample();
         }
 
-        private static object LoadTerrainData(object input, ICancelToken token) {
-            GrassPatch node = (GrassPatch)input;
-            if (node == null) {
-                throw new ArgumentException("GrassNode is null");
-            }
-
-            var terrainData = node.JobData.TerrainData;
-            var reader = terrainData.Reader;
-
-            if (reader == null) {
-                throw new ArgumentException("cannot be null", "reader");
-            }
-
-            if (terrainData == null) {
-                throw new ArgumentException("cannot be null", "terrainData");
-            }
-
-            var cfg = terrainData.Config;
-
-            // Offset coords by half world size, since serialized state is indexed from 0 up, not from -worldRadius
-            int totalPatches = cfg.PatchesPerTile * cfg.NumTiles;
-//            coords += new IntVector2(totalPatches / 2, totalPatches / 2);
-
-
-            long linearPatchIndex = node.Coord.X * totalPatches + node.Coord.Y;
-            long startPos = linearPatchIndex * (
-                cfg.PatchHeightRes * cfg.PatchHeightRes * 2 +
-                cfg.PatchHeightRes * cfg.PatchHeightRes * 3 +
-                cfg.PatchSplatRes * cfg.PatchSplatRes * 2);
-
-            reader.BaseStream.Seek(startPos, SeekOrigin.Begin);
-
-            
-
-            // Read heights
-            for (int x = 0; x < terrainData.Config.PatchHeightRes; x++) {
-                for (int z = 0; z < terrainData.Config.PatchHeightRes; z++) {
-                    // Todo: Understand why I have to do swizzled x/z reads here
-                    terrainData.Heights[z, x] = reader.ReadUInt16() / 65000f * cfg.TerrainHeight;
-//                    terrainData.Heights[z, x] = node.Height;
-                }
-            }
-
-            // Read normals
-            for (int x = 0; x < terrainData.Config.PatchHeightRes; x++) {
-                for (int z = 0; z < terrainData.Config.PatchHeightRes; z++) {
-                    Vector3 n = Vector3.zero;
-                    n.x = (reader.ReadByte() / 250f) * 2.0f - 1.0f;
-                    n.y = (reader.ReadByte() / 250f) * 2.0f - 1.0f;
-                    n.z = (reader.ReadByte() / 250f) * 2.0f - 1.0f;
-                    terrainData.Normals[x, z] = n;
-//                    terrainData.Normals[x, z] = Vector3.up;
-                }
-            }
-
-            // Read splats
-            for (int x = 0; x < terrainData.Config.PatchSplatRes; x++) {
-                for (int z = 0; z < terrainData.Config.PatchSplatRes; z++) {
-                    terrainData.Splats[x, z] = new Vector2(
-                        Mathf.Pow(reader.ReadByte() / 250f, 0.66f),
-                        reader.ReadByte() / 250f);
-//                    terrainData.Splats[x, z] = new Vector2(1f, 0f);
-                }
-            }
-
-            return node;
-        }
-        private static object GenerateMesh(object input, ICancelToken token) {
-            GrassPatch node = (GrassPatch)input;
-            if (node == null) {
-                throw new ArgumentException("GenerateMesh Failed: Node is null");
-            }
-
-            TerrainData terrainData = node.JobData.TerrainData;
-            MeshData mesh = node.JobData.MeshData;
-
-            // Todo: Initialize both of these with average patch height or something
-            float minHeight = float.MaxValue;
-            float maxHeight = float.MinValue;
-
-            float dimensions = Mathf.Sqrt(mesh.MaxInstances);
-            float dimInv = 1f / dimensions;
-            int dimensionsInt = (int)dimensions;
-            int i = 0;
-            for (int x = 0; x < dimensionsInt && !token.IsCanceled; x++) {
-                for (int z = 0; z < dimensionsInt && !token.IsCanceled; z++) {
-                    // Todo: move magic numbers to a config struct, expose in inspector
-
-                    Vector2 localIndex = new Vector2(x * dimInv, z * dimInv);
-                    localIndex.x += mesh.Random.NextSingle() * dimInv;
-                    localIndex.y += mesh.Random.NextSingle() * dimInv;
-                    Vector3 localPos = new Vector3(localIndex.x * mesh.Size, 0f, localIndex.y * mesh.Size);
-
-                    float height = terrainData.SampleInterpolatedHeight(localIndex);
-                    float snowHighFalloff = Mathf.InverseLerp(node.SnowAltitude + 300f, node.SnowAltitude + 200f, height);
-                    float snowLowFalloff = Mathf.InverseLerp(node.SnowAltitude - 50f, node.SnowAltitude - 250f, height);
-
-                    Vector2 splat = terrainData.SampleInterpolatedSplat(localIndex);
-                    // Massage splat values to make them more suitable for rendering grass sprites
-                    splat.x = Mathf.Pow(splat.x, 0.5f);
-                    splat.x = Mathf.Max(0f, splat.x - splat.y * (1f - snowLowFalloff) * 2f);
-                    splat.x *= snowHighFalloff;
-                    
-                    if (splat.x > 0.63f + mesh.Random.NextSingle() * 0.37f) {
-                        localPos.y = height;
-
-                        minHeight = Mathf.Min(minHeight, height);
-                        maxHeight = Mathf.Max(maxHeight, height);
-
-                        Quaternion rot = Quaternion.Euler(-60f + mesh.Random.NextSingle() * 120f, mesh.Random.NextSingle() * 180f, 0f);
-                        Vector3 normal = terrainData.SampleInterpolatedNormal(localIndex);
-                        Vector2 scale = new Vector2(0.5f + mesh.Random.NextSingle() * 0.5f, 0.5f + mesh.Random.NextSingle() * 0.5f) * Mathf.Min(1f, splat.x * 3f);
-
-                        CreateQuad(mesh, i++, localPos, rot, normal, scale);
-                    }
-                }
-            }
-
-            // If a patch doesn't feature any grass we need to still create valid bounds
-            if (minHeight == float.MaxValue) {
-                minHeight = 0f;
-            }
-            if (maxHeight == float.MinValue) {
-                maxHeight = 1f;
-            }
-
-            // Zero out unused verts
-            for (; i < mesh.MaxInstances ; i++) {
-                int vertIndex = i * MeshData.VertsPerQuad;
-                mesh.Vertices[vertIndex + 0] = Vector3.zero;
-                mesh.Vertices[vertIndex + 1] = Vector3.zero;
-                mesh.Vertices[vertIndex + 2] = Vector3.zero;
-                mesh.Vertices[vertIndex + 3] = Vector3.zero;
-            }
-
-            mesh.Bounds = new Bounds(
-                new Vector3(mesh.Size * 0.5f, Mathf.Lerp(minHeight, maxHeight, 0.5f), mesh.Size * 0.5f),
-                new Vector3(mesh.Size, maxHeight - minHeight, mesh.Size));
-
-            return node;
-        }
+//         private static object LoadTerrainData(object input, ICancelToken token) {
+//             GrassPatch node = (GrassPatch)input;
+//             if (node == null) {
+//                 throw new ArgumentException("GrassNode is null");
+//             }
+//
+//             var terrainData = node.JobData.TerrainData;
+//             var reader = terrainData.Reader;
+//
+//             if (reader == null) {
+//                 throw new ArgumentException("cannot be null", "reader");
+//             }
+//
+//             if (terrainData == null) {
+//                 throw new ArgumentException("cannot be null", "terrainData");
+//             }
+//
+//             var cfg = terrainData.Config;
+//
+//             // Offset coords by half world size, since serialized state is indexed from 0 up, not from -worldRadius
+//             int totalPatches = cfg.PatchesPerTile * cfg.NumTiles;
+// //            coords += new IntVector2(totalPatches / 2, totalPatches / 2);
+//
+//
+//             long linearPatchIndex = node.Coord.X * totalPatches + node.Coord.Y;
+//             long startPos = linearPatchIndex * (
+//                 cfg.PatchHeightRes * cfg.PatchHeightRes * 2 +
+//                 cfg.PatchHeightRes * cfg.PatchHeightRes * 3 +
+//                 cfg.PatchSplatRes * cfg.PatchSplatRes * 2);
+//
+//             reader.BaseStream.Seek(startPos, SeekOrigin.Begin);
+//
+//             
+//
+//             // Read heights
+//             for (int x = 0; x < terrainData.Config.PatchHeightRes; x++) {
+//                 for (int z = 0; z < terrainData.Config.PatchHeightRes; z++) {
+//                     // Todo: Understand why I have to do swizzled x/z reads here
+//                     terrainData.Heights[z, x] = reader.ReadUInt16() / 65000f * cfg.TerrainHeight;
+// //                    terrainData.Heights[z, x] = node.Height;
+//                 }
+//             }
+//
+//             // Read normals
+//             for (int x = 0; x < terrainData.Config.PatchHeightRes; x++) {
+//                 for (int z = 0; z < terrainData.Config.PatchHeightRes; z++) {
+//                     Vector3 n = Vector3.zero;
+//                     n.x = (reader.ReadByte() / 250f) * 2.0f - 1.0f;
+//                     n.y = (reader.ReadByte() / 250f) * 2.0f - 1.0f;
+//                     n.z = (reader.ReadByte() / 250f) * 2.0f - 1.0f;
+//                     terrainData.Normals[x, z] = n;
+// //                    terrainData.Normals[x, z] = Vector3.up;
+//                 }
+//             }
+//
+//             // Read splats
+//             for (int x = 0; x < terrainData.Config.PatchSplatRes; x++) {
+//                 for (int z = 0; z < terrainData.Config.PatchSplatRes; z++) {
+//                     terrainData.Splats[x, z] = new Vector2(
+//                         Mathf.Pow(reader.ReadByte() / 250f, 0.66f),
+//                         reader.ReadByte() / 250f);
+// //                    terrainData.Splats[x, z] = new Vector2(1f, 0f);
+//                 }
+//             }
+//
+//             return node;
+//         }
+//         private static object GenerateMesh(object input, ICancelToken token) {
+//             GrassPatch node = (GrassPatch)input;
+//             if (node == null) {
+//                 throw new ArgumentException("GenerateMesh Failed: Node is null");
+//             }
+//
+//             TerrainData terrainData = node.JobData.TerrainData;
+//             MeshData mesh = node.JobData.MeshData;
+//
+//             // Todo: Initialize both of these with average patch height or something
+//             float minHeight = float.MaxValue;
+//             float maxHeight = float.MinValue;
+//
+//             float dimensions = Mathf.Sqrt(mesh.MaxInstances);
+//             float dimInv = 1f / dimensions;
+//             int dimensionsInt = (int)dimensions;
+//             int i = 0;
+//             for (int x = 0; x < dimensionsInt && !token.IsCanceled; x++) {
+//                 for (int z = 0; z < dimensionsInt && !token.IsCanceled; z++) {
+//                     // Todo: move magic numbers to a config struct, expose in inspector
+//
+//                     Vector2 localIndex = new Vector2(x * dimInv, z * dimInv);
+//                     localIndex.x += mesh.Random.NextSingle() * dimInv;
+//                     localIndex.y += mesh.Random.NextSingle() * dimInv;
+//                     Vector3 localPos = new Vector3(localIndex.x * mesh.Size, 0f, localIndex.y * mesh.Size);
+//
+//                     float height = terrainData.SampleInterpolatedHeight(localIndex);
+//                     float snowHighFalloff = Mathf.InverseLerp(node.SnowAltitude + 300f, node.SnowAltitude + 200f, height);
+//                     float snowLowFalloff = Mathf.InverseLerp(node.SnowAltitude - 50f, node.SnowAltitude - 250f, height);
+//
+//                     Vector2 splat = terrainData.SampleInterpolatedSplat(localIndex);
+//                     // Massage splat values to make them more suitable for rendering grass sprites
+//                     splat.x = Mathf.Pow(splat.x, 0.5f);
+//                     splat.x = Mathf.Max(0f, splat.x - splat.y * (1f - snowLowFalloff) * 2f);
+//                     splat.x *= snowHighFalloff;
+//                     
+//                     if (splat.x > 0.63f + mesh.Random.NextSingle() * 0.37f) {
+//                         localPos.y = height;
+//
+//                         minHeight = Mathf.Min(minHeight, height);
+//                         maxHeight = Mathf.Max(maxHeight, height);
+//
+//                         Quaternion rot = Quaternion.Euler(-60f + mesh.Random.NextSingle() * 120f, mesh.Random.NextSingle() * 180f, 0f);
+//                         Vector3 normal = terrainData.SampleInterpolatedNormal(localIndex);
+//                         Vector2 scale = new Vector2(0.5f + mesh.Random.NextSingle() * 0.5f, 0.5f + mesh.Random.NextSingle() * 0.5f) * Mathf.Min(1f, splat.x * 3f);
+//
+//                         CreateQuad(mesh, i++, localPos, rot, normal, scale);
+//                     }
+//                 }
+//             }
+//
+//             // If a patch doesn't feature any grass we need to still create valid bounds
+//             if (minHeight == float.MaxValue) {
+//                 minHeight = 0f;
+//             }
+//             if (maxHeight == float.MinValue) {
+//                 maxHeight = 1f;
+//             }
+//
+//             // Zero out unused verts
+//             for (; i < mesh.MaxInstances ; i++) {
+//                 int vertIndex = i * MeshData.VertsPerQuad;
+//                 mesh.Vertices[vertIndex + 0] = Vector3.zero;
+//                 mesh.Vertices[vertIndex + 1] = Vector3.zero;
+//                 mesh.Vertices[vertIndex + 2] = Vector3.zero;
+//                 mesh.Vertices[vertIndex + 3] = Vector3.zero;
+//             }
+//
+//             mesh.Bounds = new Bounds(
+//                 new Vector3(mesh.Size * 0.5f, Mathf.Lerp(minHeight, maxHeight, 0.5f), mesh.Size * 0.5f),
+//                 new Vector3(mesh.Size, maxHeight - minHeight, mesh.Size));
+//
+//             return node;
+//         }
 
         private static void CreateQuad(MeshData data, int quadIndex, Vector3 pos, Quaternion rot, Vector3 normal, Vector2 scale) {
             Vector3 right = rot * Vector3.right * 0.5f * scale.x;
@@ -570,68 +575,68 @@ namespace RamjetAnvil.Landmass {
             data.Triangles[triIndex + 5] = vertIndex + 3;
         }
 
-        private object CompleteLoad(object input, ICancelToken token) {
+        // private object CompleteLoad(object input, ICancelToken token) {
+        //
+        //     UnityEngine.Profiling.Profiler.BeginSample("CompleteLoad");
+        //
+        //     GrassPatch node = (GrassPatch)input;
+        //
+        //     if (node == null) {
+        //         Debug.LogError("CompleteMesh: Cannot complete, node is null");
+        //         return null;
+        //     }
+        //
+        //     if (_meshPool.Count == 0) {
+        //         Debug.LogError("CompleteMesh: PatchPool is empty. This shouldn't happen!");
+        //         // Cleanup
+        //         RecycleJobData(node);
+        //         node.State = NodeState.Unloaded;
+        //         return node;
+        //     }
+        //
+        //     var patch = _meshPool.Dequeue();
+        //     node.Mesh = patch;
+        //
+        //     MeshData meshData = node.JobData.MeshData;
+        //     node.Mesh.Mesh.vertices = meshData.Vertices;
+        //     patch.Mesh.triangles = meshData.Triangles;
+        //     patch.Mesh.normals = meshData.Normals;
+        //     patch.Mesh.uv = meshData.Uvs;
+        //     patch.Mesh.bounds = meshData.Bounds;
+        //     patch.Mesh.UploadMeshData(false);
+        //
+        //     // Offset coords because world center is in middle of quadtree extents
+        //     // Todo: The quadtree could help us do pos conversion
+        //     var coord = node.Coord;
+        //     int totalPatches = _terrain.Config.PatchesPerTile * _terrain.Config.NumTiles;
+        //     coord -= new IntVector2(totalPatches / 2, totalPatches / 2);
+        //     patch.Transform.position = CoordsToWorldPoint2D(_terrain.Config.PatchSize, coord);
+        //
+        //     patch.gameObject.SetActive(true);
+        //
+        //     RecycleJobData(node);
+        //     node.State = NodeState.Loaded;
+        //
+        //     UnityEngine.Profiling.Profiler.EndSample();
+        //
+        //
+        //     return node;
+        // }
 
-            UnityEngine.Profiling.Profiler.BeginSample("CompleteLoad");
-
-            GrassPatch node = (GrassPatch)input;
-
-            if (node == null) {
-                Debug.LogError("CompleteMesh: Cannot complete, node is null");
-                return null;
-            }
-
-            if (_meshPool.Count == 0) {
-                Debug.LogError("CompleteMesh: PatchPool is empty. This shouldn't happen!");
-                // Cleanup
-                RecycleJobData(node);
-                node.State = NodeState.Unloaded;
-                return node;
-            }
-
-            var patch = _meshPool.Dequeue();
-            node.Mesh = patch;
-
-            MeshData meshData = node.JobData.MeshData;
-            node.Mesh.Mesh.vertices = meshData.Vertices;
-            patch.Mesh.triangles = meshData.Triangles;
-            patch.Mesh.normals = meshData.Normals;
-            patch.Mesh.uv = meshData.Uvs;
-            patch.Mesh.bounds = meshData.Bounds;
-            patch.Mesh.UploadMeshData(false);
-
-            // Offset coords because world center is in middle of quadtree extents
-            // Todo: The quadtree could help us do pos conversion
-            var coord = node.Coord;
-            int totalPatches = _terrain.Config.PatchesPerTile * _terrain.Config.NumTiles;
-            coord -= new IntVector2(totalPatches / 2, totalPatches / 2);
-            patch.Transform.position = CoordsToWorldPoint2D(_terrain.Config.PatchSize, coord);
-
-            patch.gameObject.SetActive(true);
-
-            RecycleJobData(node);
-            node.State = NodeState.Loaded;
-
-            UnityEngine.Profiling.Profiler.EndSample();
-
-
-            return node;
-        }
-
-        private void OnJobCanceled(Job job) {
-
-            UnityEngine.Profiling.Profiler.BeginSample("OnJobCanceled");
-
-            GrassPatch node = (GrassPatch)job.InitialInput;
-            if (node == null) {
-                throw new ArgumentException("OnJobCanceled Failed: Node is null");
-            }
-
-            Unload(node);
-
-            UnityEngine.Profiling.Profiler.EndSample();
-
-        }
+        // private void OnJobCanceled(Job job) {
+        //
+        //     UnityEngine.Profiling.Profiler.BeginSample("OnJobCanceled");
+        //
+        //     GrassPatch node = (GrassPatch)job.InitialInput;
+        //     if (node == null) {
+        //         throw new ArgumentException("OnJobCanceled Failed: Node is null");
+        //     }
+        //
+        //     Unload(node);
+        //
+        //     UnityEngine.Profiling.Profiler.EndSample();
+        //
+        // }
 
         private void Unload(GrassPatch node) {
 
