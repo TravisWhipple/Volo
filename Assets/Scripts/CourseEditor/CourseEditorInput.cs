@@ -199,17 +199,17 @@ namespace RamjetAnvil.Volo.CourseEditing {
                 currentselectedProp.CombineLatest(combinedTransformation2, (selectedProp, transformationCommand) => {
                     if (selectedProp.IsJust) {
                         return transformationCommand.Scan(
-                            new Tuple<PropId, ImmutableTransform>(selectedProp.Value.Id, selectedProp.Value.Transform),
+                            new Unity.Utility.Tuple<PropId, ImmutableTransform>(selectedProp.Value.Id, selectedProp.Value.Transform),
                             (accumulatedMovement, transformation) => {
                                 var transformUpdate = accumulatedMovement._2
                                     .Rotate(transformation.Rotation)
                                     .Translate(transformation.Position, cameraTransform.V.Rotation)
                                     .Scale(transformation.Scale);
-                                return new Tuple<PropId, ImmutableTransform>(accumulatedMovement._1, transformUpdate);
+                                return new Unity.Utility.Tuple<PropId, ImmutableTransform>(accumulatedMovement._1, transformUpdate);
                             });
                     }
                     else {
-                        return Observable.Empty<Tuple<PropId, ImmutableTransform>>();
+                        return Observable.Empty<Unity.Utility.Tuple<PropId, ImmutableTransform>>();
                     }
                 });
 

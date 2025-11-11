@@ -1,4 +1,5 @@
-﻿using RamjetAnvil.DependencyInjection;
+﻿using System;
+using RamjetAnvil.DependencyInjection;
 using RamjetAnvil.Volo;
 using UnityEngine;
 
@@ -13,17 +14,18 @@ namespace RamjetAnvil.Unity.Vr {
         }
 
         void Update() {
-            var isOculusHomeOpened = !OVRPlugin.hasVrFocus && OVRPlugin.userPresent;
-            if (_isOculusHomeCurrentlyOpened != isOculusHomeOpened) {
-                _isOculusHomeCurrentlyOpened = isOculusHomeOpened;
-                if (!isOculusHomeOpened) {
-                    Debug.Log("VR focus acquired!");
-                    _eventSystem.Emit(new Events.UnfreezeGame());
-                } else {
-                    Debug.Log("VR focus lost!");
-                    _eventSystem.Emit(new Events.FreezeGame());
-                }
-            }
+            throw new NotImplementedException("VR is not supported at this time.");
+            // var isOculusHomeOpened = !OVRPlugin.hasVrFocus && OVRPlugin.userPresent;
+            // if (_isOculusHomeCurrentlyOpened != isOculusHomeOpened) {
+            //     _isOculusHomeCurrentlyOpened = isOculusHomeOpened;
+            //     if (!isOculusHomeOpened) {
+            //         Debug.Log("VR focus acquired!");
+            //         _eventSystem.Emit(new Events.UnfreezeGame());
+            //     } else {
+            //         Debug.Log("VR focus lost!");
+            //         _eventSystem.Emit(new Events.FreezeGame());
+            //     }
+            // }
         }
     }
 }

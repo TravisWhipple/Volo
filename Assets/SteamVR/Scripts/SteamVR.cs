@@ -4,6 +4,7 @@
 //
 //=============================================================================
 
+using System;
 using UnityEngine;
 using Valve.VR;
 
@@ -19,9 +20,10 @@ public class SteamVR : System.IDisposable
 	{
 		get
 		{
-			if (!UnityEngine.VR.VRSettings.enabled)
-				enabled = false;
-			return _enabled;
+			throw new NotImplementedException("VR is not supported at this time.");
+			// if (!UnityEngine.VR.VRSettings.enabled)
+			// 	enabled = false;
+			// return _enabled;
 		}
 		set
 		{
@@ -58,7 +60,10 @@ public class SteamVR : System.IDisposable
 
 	public static bool usingNativeSupport
 	{
-		get { return UnityEngine.VR.VRDevice.GetNativePtr() != System.IntPtr.Zero; }
+		get {
+			throw new NotImplementedException("VR is not supported at this time.");
+		}
+		// get { return UnityEngine.VR.VRDevice.GetNativePtr() != System.IntPtr.Zero; }
 	}
 
 	static SteamVR CreateInstance()

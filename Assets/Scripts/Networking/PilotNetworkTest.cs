@@ -22,12 +22,14 @@ namespace RamjetAnvil.Volo.Networking {
         }
 
         void Start() {
-            const bool isPrivate = false;
-            const int maxPlayers = 2;
-            _networkServer.Host("sillyHostName", maxPlayers, isPrivate, _serverPort);
-            var localEndpoint = _networkServer.InternalEndpoint;
-
-            _networkClient.Join(localEndpoint);
+            throw new NotImplementedException("API has not been migrated.");
+            
+            // const bool isPrivate = false;
+            // const int maxPlayers = 2;
+            // _networkServer.Host("sillyHostName", maxPlayers, isPrivate, _serverPort);
+            // var localEndpoint = _networkServer.InternalEndpoint;
+            //
+            // _networkClient.Join(localEndpoint);
         }
     }
 }

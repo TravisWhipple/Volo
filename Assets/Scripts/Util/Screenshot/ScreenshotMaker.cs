@@ -51,7 +51,7 @@ public class ScreenshotMaker : MonoBehaviour {
                 //Debug.Log("setting resolution to " + resolution.Width + "x" + resolution.Height);
                 _screenshotResolution = resolution;
                 _screenshotTexture = new Texture2D(resolution.Width, resolution.Height,
-                    TextureFormat.RGB24, mipmap: false, linear: true);
+                    TextureFormat.RGB24, mipChain: false, linear: true);
             });
     }
 

@@ -9,7 +9,7 @@ using RamjetAnvil.RamNet;
 using RamjetAnvil.Unity.Utility;
 using RamjetAnvil.Padrone.Client;
 using RamjetAnvil.Volo.Networking;
-using Steamworks;
+// using Steamworks;
 using UnityEngine;
 
 namespace RamjetAnvil.Volo {
@@ -26,6 +26,7 @@ namespace RamjetAnvil.Volo {
         public static readonly AuthToken EmptyAuthToken = new AuthToken("empty", "empty");
 
         public static Func<AuthToken> CombineProviders(IReadOnlyList<ProvideAuthToken> providers) {
+            throw new NotImplementedException("API has not been migrated.");
             return () => {
                 for (int i = 0; i < providers.Count; i++) {
                     var provider = providers[i];
@@ -39,6 +40,7 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken ItchApiKeyAuthTokenProvider() {
+            throw new NotImplementedException("API has not been migrated.");
             Maybe<AuthToken> cachedAuthToken = Maybe.Nothing<AuthToken>();
             string cachedExpiryDate = null;
 
@@ -64,6 +66,7 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken ItchDownloadKeyAuthTokenProvider() {
+            throw new NotImplementedException("API has not been migrated.");
             Maybe<AuthToken> authToken = Maybe.Nothing<AuthToken>();
             var downloadKeyPath = Path.Combine(VoloAirsportFileStorage.StorageDir.Value, "ItchDownloadKey.txt");
 
@@ -79,30 +82,32 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken SteamAuthTokenProvider() {
-            const int maxTicketLength = 256;
-            var cacheTimeOut = TimeSpan.FromMinutes(30);
-
-            Maybe<AuthToken> cachedAuthToken = Maybe.Nothing<AuthToken>();
-            DateTime? cacheTime = null;
-
-            return () => {
-                if (SteamAPI.IsSteamRunning() && SteamManager.Initialized) {
-                    if (!cacheTime.HasValue || (DateTime.Now - cacheTime) > cacheTimeOut) {
-                        uint ticketLength;
-                        var ticket = new byte[maxTicketLength];
-                        SteamUser.GetAuthSessionTicket(ticket, maxTicketLength, out ticketLength);
-                        cachedAuthToken = Maybe.Just(Authentication.SteamAuthToken(ticket, ticketLength));
-                        cacheTime = DateTime.Now;
-                    }
-                } else {
-                    cachedAuthToken = Maybe.Nothing<AuthToken>();
-                }
-
-                return cachedAuthToken;
-            };
+            throw new NotImplementedException("API has not been migrated.");
+            // const int maxTicketLength = 256;
+            // var cacheTimeOut = TimeSpan.FromMinutes(30);
+            //
+            // Maybe<AuthToken> cachedAuthToken = Maybe.Nothing<AuthToken>();
+            // DateTime? cacheTime = null;
+            //
+            // return () => {
+            //     if (SteamAPI.IsSteamRunning() && SteamManager.Initialized) {
+            //         if (!cacheTime.HasValue || (DateTime.Now - cacheTime) > cacheTimeOut) {
+            //             uint ticketLength;
+            //             var ticket = new byte[maxTicketLength];
+            //             SteamUser.GetAuthSessionTicket(ticket, maxTicketLength, out ticketLength);
+            //             cachedAuthToken = Maybe.Just(Authentication.SteamAuthToken(ticket, ticketLength));
+            //             cacheTime = DateTime.Now;
+            //         }
+            //     } else {
+            //         cachedAuthToken = Maybe.Nothing<AuthToken>();
+            //     }
+            //
+            //     return cachedAuthToken;
+            // };
         }
 
         public static ProvideAuthToken AdminAuthTokenProvider() {
+            throw new NotImplementedException("API has not been migrated.");
             Maybe<AuthToken> authToken;
             var devSettings = DevSettingsSerialization.Deserialize();
             if (devSettings.IsJust) {

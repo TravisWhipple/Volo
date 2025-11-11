@@ -1,6 +1,7 @@
 // Uncomment this out to disable copying
 //#define DISABLEREDISTCOPY
 
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -10,11 +11,13 @@ public class RedistCopy {
 	[PostProcessBuild]
 	public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject) {
 #if !DISABLEREDISTCOPY
-		if (target != BuildTarget.StandaloneWindows && target != BuildTarget.StandaloneWindows64 &&
-			target != BuildTarget.StandaloneOSXIntel && target != BuildTarget.StandaloneOSXIntel64 && target != BuildTarget.StandaloneOSXUniversal &&
-			target != BuildTarget.StandaloneLinux && target != BuildTarget.StandaloneLinux64 && target != BuildTarget.StandaloneLinuxUniversal) {
-			return;
-		}
+		// FIXME TRAVIS No Steam support at this time
+		throw new NotImplementedException("Publishing is not supported at this time.");
+		// if (target != BuildTarget.StandaloneWindows && target != BuildTarget.StandaloneWindows64 &&
+		// 	target != BuildTarget.StandaloneOSXIntel && target != BuildTarget.StandaloneOSXIntel64 && target != BuildTarget.StandaloneOSXUniversal &&
+		// 	target != BuildTarget.StandaloneLinux && target != BuildTarget.StandaloneLinux64 && target != BuildTarget.StandaloneLinuxUniversal) {
+		// 	return;
+		// }
 
 		string strProjectName = Path.GetFileNameWithoutExtension(pathToBuiltProject);
 
@@ -28,9 +31,10 @@ public class RedistCopy {
 		string controllerCfg = Path.Combine(Application.dataPath, "controller.vdf");
 		if (File.Exists(controllerCfg)) {
 			string dir = "_Data";
-			if (target == BuildTarget.StandaloneOSXIntel || target == BuildTarget.StandaloneOSXIntel64 || target == BuildTarget.StandaloneOSXUniversal) {
-				dir = ".app/Contents";
-			}
+			// FIXME TRAVIS No Steam support at this time
+			// if (target == BuildTarget.StandaloneOSXIntel || target == BuildTarget.StandaloneOSXIntel64 || target == BuildTarget.StandaloneOSXUniversal) {
+			// 	dir = ".app/Contents";
+			// }
 
 			string strFileDest = Path.Combine(Path.Combine(Path.GetDirectoryName(pathToBuiltProject), strProjectName + dir), "controller.vdf");
 

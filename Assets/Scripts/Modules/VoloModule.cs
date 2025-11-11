@@ -16,7 +16,7 @@ using RamjetAnvil.Volo;
 using RamjetAnvil.Volo.Util;
 using RxUnity.Schedulers;
 using UnityEngine.SceneManagement;
-using UnityEngine.VR;
+// using UnityEngine.VR;
 using Valve.VR;
 using Object = UnityEngine.Object;
 
@@ -280,14 +280,15 @@ public class VoloModule : IModule {
     }
 
     private static VrMode ValidateVrMode(VrMode mode) {
-        if (mode == VrMode.Oculus && !VRDevice.isPresent) {
-            Debug.LogError("Oculus mode selected, but Oculus Rift was not found.");
-            mode = VrMode.None;
-        }
-        else if (mode == VrMode.OpenVr && !OpenVR.IsHmdPresent()) {
-            Debug.LogError("OpenVR mode selected, but HTC Vive was not found.");
-            mode = VrMode.None;
-        }
+        // FIXME TRAVIS No VR support at this time
+        // if (mode == VrMode.Oculus && !VRDevice.isPresent) {
+        //     Debug.LogError("Oculus mode selected, but Oculus Rift was not found.");
+        //     mode = VrMode.None;
+        // }
+        // else if (mode == VrMode.OpenVr && !OpenVR.IsHmdPresent()) {
+        //     Debug.LogError("OpenVR mode selected, but HTC Vive was not found.");
+        //     mode = VrMode.None;
+        // }
         return mode;
     }
 

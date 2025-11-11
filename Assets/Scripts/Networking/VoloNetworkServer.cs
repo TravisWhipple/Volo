@@ -26,10 +26,12 @@ namespace RamjetAnvil.Volo.Networking {
         [SerializeField] private VersionInfo _versionInfo;
         [SerializeField] private bool _runOnLocalHost = false;
 
-        [SerializeField] private LidgrenNetworkTransporter _transporter;
+        // FIXME TRAVIS No network support at this time
+        // [SerializeField] private LidgrenNetworkTransporter _transporter;
 
         private NetworkSystems _networkSystems;
-        private LidgrenNatFacilitatorConnection _natFacilitatorConnection;
+        // FIXME TRAVIS No network support at this time
+        // private LidgrenNatFacilitatorConnection _natFacilitatorConnection;
         private IDictionary<ConnectionId, PlayerInfo> _connectedClients;
         private IDictionary<ConnectionId, ClientSessionId> _clientSessions;
         private PlayerInfo _serverPlayerInfo;
@@ -44,9 +46,9 @@ namespace RamjetAnvil.Volo.Networking {
             _clientSessions = new ArrayDictionary<ConnectionId, ClientSessionId>(256);
         }
         
-        public IPEndPoint InternalEndpoint {
-            get { return _transporter.InternalEndpoint; }
-        }
+        // public IPEndPoint InternalEndpoint {
+        //     get { return _transporter.InternalEndpoint; }
+        // }
 
         public void HostAsSingleplayer() {
             _serverPlayerInfo = new PlayerInfo("", "", false, false);
@@ -63,11 +65,12 @@ namespace RamjetAnvil.Volo.Networking {
             if (port > -1) {
                 hostConfig.Port = port;
             }
-            _transporter.Open(hostConfig);
+            // FIXME TRAVIS No network support at this time
+            // _transporter.Open(hostConfig);
+            // _transporter.RequestApproval += RegisterPlayer;
 
-            _transporter.RequestApproval += RegisterPlayer;
-
-            _coroutineScheduler.Run(_natFacilitatorConnection.Register());
+            // FIXME TRAVIS No network support at this time
+            // _coroutineScheduler.Run(_natFacilitatorConnection.Register());
             _masterServerRegistration = _coroutineScheduler.Run(RegisterAtMasterServer(hostName, maxPlayers, isPrivate));
             _networkSystems.GroupRouter.GetConnectionGroup(ConnectionGroups.Default)
                 .PeerLeft += OnPeerLeft;
@@ -93,52 +96,56 @@ namespace RamjetAnvil.Volo.Networking {
             ApprovalSecret approvalSecret, 
             Action<ApprovalSecret> approve, 
             Action<ApprovalSecret> deny) {
+            
+            throw new NotImplementedException("API has not been migrated.");
 
-            while (!_natFacilitatorConnection.ExternalEndpoint.IsResultAvailable) {
-                yield return WaitCommand.WaitForNextFrame;
-            }
-
-            var externalEndpoint = _natFacilitatorConnection.ExternalEndpoint.Result;
-
-            var playerSessionResult = new AsyncResult<Maybe<PlayerSessionInfo>>();
-            var clientSessionId = new ClientSessionId(approvalSecret.Value);
-            _masterServerClient.Client.GetPlayerInfo(externalEndpoint, clientSessionId,
-                (statusCode, p) => {
-                    if (statusCode == HttpStatusCode.OK) {
-                        playerSessionResult.SetResult(Maybe.Just(p));
-                    } else {
-                        playerSessionResult.SetResult(Maybe.Nothing<PlayerSessionInfo>());
-                    }
-                });
-
-            while (!playerSessionResult.IsResultAvailable) {
-                yield return WaitCommand.WaitForNextFrame;
-            }
-
-            var playerSessionInfo = playerSessionResult.Result;
-            if (playerSessionInfo.IsJust && !_clientSessions.Values.Contains(clientSessionId)) {
-                var playerInfo = playerSessionInfo.Value.PlayerInfo;
-                Debug.Log("'" + playerInfo.Name + "' connected");
-                // TODO:
-                // Store player info and use it to enhance the replicated pilot so
-                // that players can see who's flying that pilot
-                _connectedClients[connectionId] = playerInfo;
-                _clientSessions[connectionId] = clientSessionId;
-                approve(approvalSecret);
-            } else {
-                Debug.Log("Player never registered at the master server, or player was already registered. Denying connection");
-                deny(approvalSecret);
-            }
+            // while (!_natFacilitatorConnection.ExternalEndpoint.IsResultAvailable) {
+            //     yield return WaitCommand.WaitForNextFrame;
+            // }
+            //
+            // var externalEndpoint = _natFacilitatorConnection.ExternalEndpoint.Result;
+            //
+            // var playerSessionResult = new AsyncResult<Maybe<PlayerSessionInfo>>();
+            // var clientSessionId = new ClientSessionId(approvalSecret.Value);
+            // _masterServerClient.Client.GetPlayerInfo(externalEndpoint, clientSessionId,
+            //     (statusCode, p) => {
+            //         if (statusCode == HttpStatusCode.OK) {
+            //             playerSessionResult.SetResult(Maybe.Just(p));
+            //         } else {
+            //             playerSessionResult.SetResult(Maybe.Nothing<PlayerSessionInfo>());
+            //         }
+            //     });
+            //
+            // while (!playerSessionResult.IsResultAvailable) {
+            //     yield return WaitCommand.WaitForNextFrame;
+            // }
+            //
+            // var playerSessionInfo = playerSessionResult.Result;
+            // if (playerSessionInfo.IsJust && !_clientSessions.Values.Contains(clientSessionId)) {
+            //     var playerInfo = playerSessionInfo.Value.PlayerInfo;
+            //     Debug.Log("'" + playerInfo.Name + "' connected");
+            //     // TODO:
+            //     // Store player info and use it to enhance the replicated pilot so
+            //     // that players can see who's flying that pilot
+            //     _connectedClients[connectionId] = playerInfo;
+            //     _clientSessions[connectionId] = clientSessionId;
+            //     approve(approvalSecret);
+            // } else {
+            //     Debug.Log("Player never registered at the master server, or player was already registered. Denying connection");
+            //     deny(approvalSecret);
+            // }
         }
         
         private void OnPeerLeft(ConnectionId connectionId) {
-            ClientSessionId sessionId;
-            if (_clientSessions.TryGetValue(connectionId, out sessionId)) {
-                var externalEndpoint = _natFacilitatorConnection.ExternalEndpoint.Result;
-                _masterServerClient.Client.ReportLeave(externalEndpoint, sessionId, statusCode => {});
-            }
-            _clientSessions.Remove(connectionId);
-            _connectedClients.Remove(connectionId);
+            throw new NotImplementedException("API has not been migrated.");
+            
+            // ClientSessionId sessionId;
+            // if (_clientSessions.TryGetValue(connectionId, out sessionId)) {
+            //     var externalEndpoint = _natFacilitatorConnection.ExternalEndpoint.Result;
+            //     _masterServerClient.Client.ReportLeave(externalEndpoint, sessionId, statusCode => {});
+            // }
+            // _clientSessions.Remove(connectionId);
+            // _connectedClients.Remove(connectionId);
         }
 
         // TODO Maybe this is logic that can be moved to the Ramnet library?
@@ -154,20 +161,22 @@ namespace RamjetAnvil.Volo.Networking {
         private readonly IList<ReplicatedObject> _replicatedObjectsCache = new List<ReplicatedObject>(); 
 
         public void Stop() {
+            
             _networkSystems.Replicator.RemoveAllReplicatedInstances();
             _networkSystems.DefaultMessageRouter.ClearHandlers();
 
             _networkSystems.GroupRouter.GetConnectionGroup(ConnectionGroups.Default)
                 .PeerLeft -= OnPeerLeft;
 
-            if (_transporter.Status == TransporterStatus.Open) {
-                _transporter.Close();    
-                _transporter.RequestApproval -= RegisterPlayer;
-                
-                _masterServerClient.Client.UnregisterHost(_natFacilitatorConnection.ExternalEndpoint.Result, code => {});
-                _natFacilitatorConnection.Unregister();
-                _masterServerRegistration.Dispose();
-            }
+            // FIXME TRAVIS No network support at this time
+            // if (_transporter.Status == TransporterStatus.Open) {
+            //     _transporter.Close();    
+            //     _transporter.RequestApproval -= RegisterPlayer;
+            //     
+            //     _masterServerClient.Client.UnregisterHost(_natFacilitatorConnection.ExternalEndpoint.Result, code => {});
+            //     _natFacilitatorConnection.Unregister();
+            //     _masterServerRegistration.Dispose();
+            // }
 
             _connectedClients.Clear();
             _clientSessions.Clear();
@@ -224,90 +233,91 @@ namespace RamjetAnvil.Volo.Networking {
 //        }
 
         private IEnumerator<WaitCommand> RegisterAtMasterServer(string hostName, int maxPlayers, bool isPrivate = false) {
-            while (!_natFacilitatorConnection.ExternalEndpoint.IsResultAvailable) {
-                yield return WaitCommand.WaitForNextFrame;
-            }
-
-            var isRegistrationSuccessful = false;
-            while (true) {
-                var externalEndpoint = _natFacilitatorConnection.ExternalEndpoint.Result;
-
-                while (!isRegistrationSuccessful) {
-                    var registrationConfirmation = new AsyncResult<HttpStatusCode>();
-                    var endpoint = _runOnLocalHost
-                        ? new IPEndPoint(IPAddress.Parse("127.0.0.1"), externalEndpoint.Port)
-                        : externalEndpoint;
-
-                    Debug.Log("External endpoint is: " + endpoint);
-                    string password = null;
-                    var request = new HostRegistrationRequest(hostName,
-                        new PeerInfo(endpoint, _transporter.InternalEndpoint),
-                        password,
-                        isPrivate,
-                        _versionInfo.VersionNumber,
-                        maxPlayers);
-                    _masterServerClient.Client.RegisterHost(request, statusCode => registrationConfirmation.SetResult(statusCode));
-
-                    while (!registrationConfirmation.IsResultAvailable) {
-                        yield return WaitCommand.WaitForNextFrame;
-                    }
-
-                    var asyncPlayerInfo = new AsyncResult<Maybe<PlayerInfo>>();
-                    _masterServerClient.Client.Me((statusCode, playerInfo) => {
-                        if (statusCode == HttpStatusCode.OK) {
-                            asyncPlayerInfo.SetResult(Maybe.Just(playerInfo));
-                        } else {
-                            Debug.LogWarning("Unable to retrieve server player info from Padrone");
-                            asyncPlayerInfo.SetResult(Maybe<PlayerInfo>.Nothing);
-                        }
-                    });
-                    
-                    while (!asyncPlayerInfo.IsResultAvailable) {
-                        yield return WaitCommand.WaitForNextFrame;
-                    }
-
-                    if (asyncPlayerInfo.Result.IsJust) {
-                        _serverPlayerInfo = asyncPlayerInfo.Result.Value;
-                    } else {
-                        _serverPlayerInfo = new PlayerInfo("Unknown player", "", false, false);
-                    }
-
-                    if (registrationConfirmation.Result != HttpStatusCode.OK) {
-                        Debug.LogWarning("Failed to register at the master server due to: " + registrationConfirmation.Result);
-                    } else {
-                        isRegistrationSuccessful = true;
-                        Debug.Log("Successfully registered at master server");
-                    }
-
-                    yield return WaitCommand.WaitSeconds(3f);
-                }
-
-                while (isRegistrationSuccessful) {
-                    yield return WaitCommand.WaitSeconds(30f);
-
-                    var pingResult = new AsyncResult<HttpStatusCode>();
-                    var endpoint = _runOnLocalHost
-                        ? new IPEndPoint(IPAddress.Parse("127.0.0.1"), externalEndpoint.Port)
-                        : externalEndpoint;
-
-                    var sessions = _clientSessions.Values.ToListOptimized();
-                    _masterServerClient.Client.Ping(endpoint, sessions, statusCode => pingResult.SetResult(statusCode));
-                    while (!pingResult.IsResultAvailable) {
-                        yield return WaitCommand.WaitForNextFrame;
-                    }
-
-                    isRegistrationSuccessful = pingResult.Result == HttpStatusCode.OK;
-                }
-            }
+            throw new NotImplementedException("API has not been migrated.");
+            // while (!_natFacilitatorConnection.ExternalEndpoint.IsResultAvailable) {
+            //     yield return WaitCommand.WaitForNextFrame;
+            // }
+            //
+            // var isRegistrationSuccessful = false;
+            // while (true) {
+            //     var externalEndpoint = _natFacilitatorConnection.ExternalEndpoint.Result;
+            //
+            //     while (!isRegistrationSuccessful) {
+            //         var registrationConfirmation = new AsyncResult<HttpStatusCode>();
+            //         var endpoint = _runOnLocalHost
+            //             ? new IPEndPoint(IPAddress.Parse("127.0.0.1"), externalEndpoint.Port)
+            //             : externalEndpoint;
+            //
+            //         Debug.Log("External endpoint is: " + endpoint);
+            //         string password = null;
+            //         var request = new HostRegistrationRequest(hostName,
+            //             new PeerInfo(endpoint, _transporter.InternalEndpoint),
+            //             password,
+            //             isPrivate,
+            //             _versionInfo.VersionNumber,
+            //             maxPlayers);
+            //         _masterServerClient.Client.RegisterHost(request, statusCode => registrationConfirmation.SetResult(statusCode));
+            //
+            //         while (!registrationConfirmation.IsResultAvailable) {
+            //             yield return WaitCommand.WaitForNextFrame;
+            //         }
+            //
+            //         var asyncPlayerInfo = new AsyncResult<Maybe<PlayerInfo>>();
+            //         _masterServerClient.Client.Me((statusCode, playerInfo) => {
+            //             if (statusCode == HttpStatusCode.OK) {
+            //                 asyncPlayerInfo.SetResult(Maybe.Just(playerInfo));
+            //             } else {
+            //                 Debug.LogWarning("Unable to retrieve server player info from Padrone");
+            //                 asyncPlayerInfo.SetResult(Maybe<PlayerInfo>.Nothing);
+            //             }
+            //         });
+            //         
+            //         while (!asyncPlayerInfo.IsResultAvailable) {
+            //             yield return WaitCommand.WaitForNextFrame;
+            //         }
+            //
+            //         if (asyncPlayerInfo.Result.IsJust) {
+            //             _serverPlayerInfo = asyncPlayerInfo.Result.Value;
+            //         } else {
+            //             _serverPlayerInfo = new PlayerInfo("Unknown player", "", false, false);
+            //         }
+            //
+            //         if (registrationConfirmation.Result != HttpStatusCode.OK) {
+            //             Debug.LogWarning("Failed to register at the master server due to: " + registrationConfirmation.Result);
+            //         } else {
+            //             isRegistrationSuccessful = true;
+            //             Debug.Log("Successfully registered at master server");
+            //         }
+            //
+            //         yield return WaitCommand.WaitSeconds(3f);
+            //     }
+            //
+            //     while (isRegistrationSuccessful) {
+            //         yield return WaitCommand.WaitSeconds(30f);
+            //
+            //         var pingResult = new AsyncResult<HttpStatusCode>();
+            //         var endpoint = _runOnLocalHost
+            //             ? new IPEndPoint(IPAddress.Parse("127.0.0.1"), externalEndpoint.Port)
+            //             : externalEndpoint;
+            //
+            //         var sessions = _clientSessions.Values.ToListOptimized();
+            //         _masterServerClient.Client.Ping(endpoint, sessions, statusCode => pingResult.SetResult(statusCode));
+            //         while (!pingResult.IsResultAvailable) {
+            //             yield return WaitCommand.WaitForNextFrame;
+            //         }
+            //
+            //         isRegistrationSuccessful = pingResult.Result == HttpStatusCode.OK;
+            //     }
+            // }
         }
 
         public NetworkSystems NetworkSystems {
             set { _networkSystems = value; }
         }
 
-        public LidgrenNatFacilitatorConnection NatFacilitatorConnection {
-            set { _natFacilitatorConnection = value; }
-        }
+        // public LidgrenNatFacilitatorConnection NatFacilitatorConnection {
+        //     set { _natFacilitatorConnection = value; }
+        // }
 
         private void OnGUI() {
             if (_isHosting) {

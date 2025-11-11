@@ -47,81 +47,82 @@ public class VoloStateMachine : MonoBehaviour {
     }
 
     public void StartMachine(ICoroutineScheduler scheduler, DependencyContainer globalDependencies) {
-#region Networking
-
-        var gameSettings = _gameSettingsProvider.ActiveSettings;
-
-        var networking = GameObject.Find("Networking");
-        var lidgrenTransporter = networking.GetComponentInChildren<LidgrenNetworkTransporter>();
-        var networkMessageSender = networking.GetComponentInChildren<QueueingMessageSender>();
-        networkMessageSender.Transporter = lidgrenTransporter;
-
-        var connectionIdPool = new ConnectionIdPool(maxConnectionIds: 64);
-        //var connectionManager = new DefaultConnectionManager(lidgrenTransporter, connectionIdPool);
-        var natFacilitatorEndpoint = Ipv4Endpoint.Parse(gameSettings.Other.NatFacilitatorEndpoint).ToIpEndPoint();
-        var natFacilitatorConnection = new LidgrenNatFacilitatorConnection(natFacilitatorEndpoint, lidgrenTransporter);
-        var natPunchClient = new LidgrenNatPunchClient(scheduler, natFacilitatorConnection);
-        var connectionAttemptTimeout = gameSettings.Other.ConnectionAttemptTimeout;
-        var natPunchConnectionManager = new LidgrenPunchThroughFacilitator(lidgrenTransporter, scheduler, natPunchClient,
-            connectionAttemptTimeout, connectionIdPool);
-
-        lidgrenTransporter.ConnectionIdPool = connectionIdPool;
-        var latencyInfo = new LatencyInfo(connectionIdPool.MaxConnectionIds);
-
-        var groupRouterConfig = ConnectionGroups.RouterConfig;
-        var networkSystems = NetworkSystem.Create(
-            lidgrenTransporter,
-            lidgrenTransporter,
-            groupRouterConfig,
-            ConnectionGroups.Default,
-            ReplicationObjects.Factories,
-            networkMessageSender,
-            natPunchConnectionManager,
-            latencyInfo,
-            globalDependencies);
-        var voloServer = networking.GetComponentInChildren<VoloNetworkServer>();
-        voloServer.NetworkSystems = networkSystems;
-        voloServer.NatFacilitatorConnection = natFacilitatorConnection;
-        var voloClient = networking.GetComponentInChildren<VoloNetworkClient>();
-        voloClient.NetworkSystems = networkSystems;
-        voloClient.LatencyInfo = latencyInfo;
-
-        var activeNetwork = new ActiveNetwork(networkSystems, voloServer, voloClient, scheduler);
-        _playingData.ActiveNetwork = activeNetwork;
-        _mainMenuData.ActiveNetwork = activeNetwork;
-        _serverBrowserData.ActiveNetwork = activeNetwork;
-
-        /*
-         * Create lean and mean main menu system that allows a player to choose between single and multiplayer
-         *  
-         * Notes:
-         *   - Keep as much logic that is generic to both single and multiplayer generic. Don't make a special code path
-         *     for singleplayer unless it is a feature that is only available in singleplayer.
-         *   - Options menu should be as game independent as possible, not relying on a specific singleplayer state for example.
-         *   - State machine transitions should also become separate states such that we can handle them in a better, cleaner way
-         * 
-         * 
-         * Case 1: Single player game
-         * - Boot game, start singleplayer, fly for one round, quit game
-         *   - On boot: create instance of a network system
-         *   - Pass network system into the state machine
-         *   - When going into the playing state, spawn/despawn/respawn pilot through replicator
-         *   
-         * Case 2: Multiplayer game - server
-         * - Boot game, main screen: choose to create multiplayer server,
-         *   - on boot create instance of network system
-         *   - when in starting multiplayer server state open transporter
-         *   - when a spawnpoint is selected replicate the player
-         * - separate state machine for multiplayer logic
-         * 
-         * Case 3: Multiplayer game - client
-         * - Boot game, main screen: choose to join a multiplayer server
-         *   - server list: allow client to join a game, show if join/connect is in progress, allow for cancellation
-         *   - when a spawnpoint is selected request a spawn to the server
-         */ 
-
-
-#endregion
+        // FIXME TRAVIS Code contains errors. No network support at this time
+// #region Networking
+//
+//         var gameSettings = _gameSettingsProvider.ActiveSettings;
+//
+//         var networking = GameObject.Find("Networking");
+//         var lidgrenTransporter = networking.GetComponentInChildren<LidgrenNetworkTransporter>();
+//         var networkMessageSender = networking.GetComponentInChildren<QueueingMessageSender>();
+//         networkMessageSender.Transporter = lidgrenTransporter;
+//
+//         var connectionIdPool = new ConnectionIdPool(maxConnectionIds: 64);
+//         //var connectionManager = new DefaultConnectionManager(lidgrenTransporter, connectionIdPool);
+//         var natFacilitatorEndpoint = Ipv4Endpoint.Parse(gameSettings.Other.NatFacilitatorEndpoint).ToIpEndPoint();
+//         var natFacilitatorConnection = new LidgrenNatFacilitatorConnection(natFacilitatorEndpoint, lidgrenTransporter);
+//         var natPunchClient = new LidgrenNatPunchClient(scheduler, natFacilitatorConnection);
+//         var connectionAttemptTimeout = gameSettings.Other.ConnectionAttemptTimeout;
+//         var natPunchConnectionManager = new LidgrenPunchThroughFacilitator(lidgrenTransporter, scheduler, natPunchClient,
+//             connectionAttemptTimeout, connectionIdPool);
+//
+//         lidgrenTransporter.ConnectionIdPool = connectionIdPool;
+//         var latencyInfo = new LatencyInfo(connectionIdPool.MaxConnectionIds);
+//
+//         var groupRouterConfig = ConnectionGroups.RouterConfig;
+//         var networkSystems = NetworkSystem.Create(
+//             lidgrenTransporter,
+//             lidgrenTransporter,
+//             groupRouterConfig,
+//             ConnectionGroups.Default,
+//             ReplicationObjects.Factories,
+//             networkMessageSender,
+//             natPunchConnectionManager,
+//             latencyInfo,
+//             globalDependencies);
+//         var voloServer = networking.GetComponentInChildren<VoloNetworkServer>();
+//         voloServer.NetworkSystems = networkSystems;
+//         voloServer.NatFacilitatorConnection = natFacilitatorConnection;
+//         var voloClient = networking.GetComponentInChildren<VoloNetworkClient>();
+//         voloClient.NetworkSystems = networkSystems;
+//         voloClient.LatencyInfo = latencyInfo;
+//
+//         var activeNetwork = new ActiveNetwork(networkSystems, voloServer, voloClient, scheduler);
+//         _playingData.ActiveNetwork = activeNetwork;
+//         _mainMenuData.ActiveNetwork = activeNetwork;
+//         _serverBrowserData.ActiveNetwork = activeNetwork;
+//
+//         /*
+//          * Create lean and mean main menu system that allows a player to choose between single and multiplayer
+//          *  
+//          * Notes:
+//          *   - Keep as much logic that is generic to both single and multiplayer generic. Don't make a special code path
+//          *     for singleplayer unless it is a feature that is only available in singleplayer.
+//          *   - Options menu should be as game independent as possible, not relying on a specific singleplayer state for example.
+//          *   - State machine transitions should also become separate states such that we can handle them in a better, cleaner way
+//          * 
+//          * 
+//          * Case 1: Single player game
+//          * - Boot game, start singleplayer, fly for one round, quit game
+//          *   - On boot: create instance of a network system
+//          *   - Pass network system into the state machine
+//          *   - When going into the playing state, spawn/despawn/respawn pilot through replicator
+//          *   
+//          * Case 2: Multiplayer game - server
+//          * - Boot game, main screen: choose to create multiplayer server,
+//          *   - on boot create instance of network system
+//          *   - when in starting multiplayer server state open transporter
+//          *   - when a spawnpoint is selected replicate the player
+//          * - separate state machine for multiplayer logic
+//          * 
+//          * Case 3: Multiplayer game - client
+//          * - Boot game, main screen: choose to join a multiplayer server
+//          *   - server list: allow client to join a game, show if join/connect is in progress, allow for cancellation
+//          *   - when a spawnpoint is selected request a spawn to the server
+//          */ 
+//
+//
+// #endregion
 
         _machine = new StateMachine<VoloStateMachine>(this, scheduler);
 

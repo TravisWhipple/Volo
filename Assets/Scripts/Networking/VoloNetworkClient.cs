@@ -23,7 +23,8 @@ namespace RamjetAnvil.Volo.Networking {
         [SerializeField] private AbstractUnityClock _localRealtimeClock;
         [SerializeField, Dependency("gameClock")] private AbstractUnityClock _gameClock;
         [SerializeField, Dependency("fixedClock")] private AbstractUnityClock _fixedClock;
-        [SerializeField] private LidgrenNetworkTransporter _transporter;
+        // FIXME TRAVIS No network support at this time
+        // [SerializeField] private LidgrenNetworkTransporter _transporter;
         private NetworkSystems _networkSystems;
 
         private ConnectionId _hostConnectionId;
@@ -71,7 +72,8 @@ namespace RamjetAnvil.Volo.Networking {
                 if (clientPort > -1) {
                     netConfig.Port = clientPort;
                 }
-                _transporter.Open(netConfig);
+                // FIXME TRAVIS No network support at this time
+                // _transporter.Open(netConfig);
 
                 var approvalSecret = new ApprovalSecret(_sessionId.Value.Value);
                 _hostConnectionId = _networkSystems.ConnectionManager.Connect(endPoint,

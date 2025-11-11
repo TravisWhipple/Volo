@@ -1,3 +1,5 @@
+using System;
+
 namespace UnityStandardAssets.CinematicEffects
 {
     using UnityEngine;
@@ -364,29 +366,31 @@ namespace UnityStandardAssets.CinematicEffects
                 {
                     // Checks import settings on the lut, offers to fix them if invalid
                     TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(concreteTarget.lut.texture));
-                    bool valid = importer.anisoLevel == 0
-                        && importer.mipmapEnabled == false
-                        && importer.linearTexture == true
-                        && (importer.textureFormat == TextureImporterFormat.RGB24 || importer.textureFormat == TextureImporterFormat.AutomaticTruecolor);
-
-                    if (!valid)
-                    {
-                        EditorGUILayout.HelpBox("Invalid LUT import settings.", MessageType.Warning);
-
-                        GUILayout.Space(-32);
-                        EditorGUILayout.BeginHorizontal();
-                        {
-                            GUILayout.FlexibleSpace();
-                            if (GUILayout.Button("Fix", GUILayout.Width(60)))
-                            {
-                                SetLUTImportSettings(importer);
-                                AssetDatabase.Refresh();
-                            }
-                            GUILayout.Space(8);
-                        }
-                        EditorGUILayout.EndHorizontal();
-                        GUILayout.Space(11);
-                    }
+                    throw new Exception("Sub-condition has not been migrated. Please verify what the old code \"importer.textureFormat == TextureImporterFormat.AutomaticTruecolor\" did.");
+                    
+                    // bool valid = importer.anisoLevel == 0
+                    //     && importer.mipmapEnabled == false
+                    //     && importer.linearTexture == true
+                    //     && (importer.textureFormat == TextureImporterFormat.RGB24 || importer.textureFormat == TextureImporterFormat.AutomaticTruecolor);
+                    //
+                    // if (!valid)
+                    // {
+                    //     EditorGUILayout.HelpBox("Invalid LUT import settings.", MessageType.Warning);
+                    //
+                    //     GUILayout.Space(-32);
+                    //     EditorGUILayout.BeginHorizontal();
+                    //     {
+                    //         GUILayout.FlexibleSpace();
+                    //         if (GUILayout.Button("Fix", GUILayout.Width(60)))
+                    //         {
+                    //             SetLUTImportSettings(importer);
+                    //             AssetDatabase.Refresh();
+                    //         }
+                    //         GUILayout.Space(8);
+                    //     }
+                    //     EditorGUILayout.EndHorizontal();
+                    //     GUILayout.Space(11);
+                    // }
                 }
             }
 
