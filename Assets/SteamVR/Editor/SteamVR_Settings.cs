@@ -120,7 +120,9 @@ public class SteamVR_Settings : EditorWindow
 				updated = true;
 			}
 
-			throw new NotImplementedException("VR is not supported at this time.");
+			// throw new NotImplementedException("VR is not supported at this time.");
+			Debug.LogWarning("VR is not supported at this time.");
+			return;
 // 	
 // #if (UNITY_5_4 || UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
 // 			var devices = UnityEditorInternal.VR.VREditor.GetVREnabledDevices(BuildTargetGroup.Standalone);

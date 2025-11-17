@@ -30,6 +30,9 @@ public class SteamVR_Update : EditorWindow
 
 	static void Update()
 	{
+		Debug.LogWarning("VR is not supported at this time.");
+		return;
+		
 		if (!gotVersion)
 		{
 			if (wwwVersion == null)

@@ -26,7 +26,7 @@ namespace RamjetAnvil.Volo {
         public static readonly AuthToken EmptyAuthToken = new AuthToken("empty", "empty");
 
         public static Func<AuthToken> CombineProviders(IReadOnlyList<ProvideAuthToken> providers) {
-            throw new NotImplementedException("API has not been migrated.");
+            // throw new NotImplementedException("API has not been migrated.");
             return () => {
                 for (int i = 0; i < providers.Count; i++) {
                     var provider = providers[i];
@@ -40,7 +40,13 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken ItchApiKeyAuthTokenProvider() {
-            throw new NotImplementedException("API has not been migrated.");
+            Debug.LogWarning("Creating empty auth token provider");
+            return () => {
+                Debug.LogWarning("Itch API has not been migrated.");
+                return Maybe.Nothing<AuthToken>();
+            };
+            // throw new NotImplementedException("API has not been migrated.");
+            
             Maybe<AuthToken> cachedAuthToken = Maybe.Nothing<AuthToken>();
             string cachedExpiryDate = null;
 
@@ -66,7 +72,14 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken ItchDownloadKeyAuthTokenProvider() {
-            throw new NotImplementedException("API has not been migrated.");
+            Debug.LogWarning("Creating empty auth token provider");
+            return () => {
+                Debug.LogWarning("Itch API has not been migrated.");
+                return Maybe.Nothing<AuthToken>();
+            };
+            
+            // throw new NotImplementedException("API has not been migrated.");
+            
             Maybe<AuthToken> authToken = Maybe.Nothing<AuthToken>();
             var downloadKeyPath = Path.Combine(VoloAirsportFileStorage.StorageDir.Value, "ItchDownloadKey.txt");
 
@@ -82,7 +95,14 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken SteamAuthTokenProvider() {
-            throw new NotImplementedException("API has not been migrated.");
+            Debug.LogWarning("Creating empty auth token provider");
+            return () => {
+                Debug.LogWarning("Steam API has not been migrated.");
+                return Maybe.Nothing<AuthToken>();
+            };
+            
+            // throw new NotImplementedException("API has not been migrated.");
+            
             // const int maxTicketLength = 256;
             // var cacheTimeOut = TimeSpan.FromMinutes(30);
             //
@@ -107,7 +127,14 @@ namespace RamjetAnvil.Volo {
         }
 
         public static ProvideAuthToken AdminAuthTokenProvider() {
-            throw new NotImplementedException("API has not been migrated.");
+            Debug.LogWarning("Creating empty auth token provider");
+            return () => {
+                Debug.LogWarning("Unknown \"Admin API\" has not been migrated.");
+                return Maybe.Nothing<AuthToken>();
+            };
+            
+            // throw new NotImplementedException("API has not been migrated.");
+            
             Maybe<AuthToken> authToken;
             var devSettings = DevSettingsSerialization.Deserialize();
             if (devSettings.IsJust) {
