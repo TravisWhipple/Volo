@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 Shader "Hidden/LensAberrations"
 {
     Properties
@@ -131,7 +129,7 @@ Shader "Hidden/LensAberrations"
                 v2f vert_blur_prepass(appdata_img v)
                 {
                     v2f o;
-                    o.pos = UnityObjectToClipPos(v.vertex);
+                    o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
                     o.uv = v.texcoord.xy;
 
                     #if UNITY_UV_STARTS_AT_TOP

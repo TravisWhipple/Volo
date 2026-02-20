@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Gradient Camera Bk"
+﻿Shader "Gradient Camera Bk"
 {
 	Properties
 	{
@@ -42,7 +40,7 @@ Shader "Gradient Camera Bk"
 			vOutput vert(vInput input)
 			{
 				vOutput o;
-				o.clipPos = UnityObjectToClipPos(input.vertexPos);
+				o.clipPos = mul(UNITY_MATRIX_MVP, input.vertexPos);
 				o.viewPos = mul(UNITY_MATRIX_MV, input.vertexPos);
 
 				return o;

@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 Shader "Hidden/Fast Approximate Anti-aliasing"
 {
     Properties
@@ -53,7 +51,7 @@ Shader "Hidden/Fast Approximate Anti-aliasing"
         {
             Varying output;
 
-            output.position = UnityObjectToClipPos(input.position);
+            output.position = mul(UNITY_MATRIX_MVP, input.position);
             output.uv = input.uv;
 
             return output;

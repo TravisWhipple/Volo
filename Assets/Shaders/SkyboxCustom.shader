@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Skybox/Custom" {
 	Properties{
@@ -173,7 +171,7 @@ Shader "Skybox/Custom" {
 	v2f vert(appdata_t v)
 	{
 		v2f OUT;
-		OUT.pos = UnityObjectToClipPos(v.vertex);
+		OUT.pos = mul(UNITY_MATRIX_MVP, v.vertex);
 
 		float3 kSkyTintInGammaSpace = COLOR_2_GAMMA(_SkyTint); // convert tint from Linear back to Gamma
 		float3 kScatteringWavelength = lerp(

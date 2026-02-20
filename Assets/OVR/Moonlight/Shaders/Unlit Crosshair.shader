@@ -1,5 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
 // Unlit alpha-blended shader.
 // - no lighting
 // - no lightmap support
@@ -61,7 +59,7 @@ Shader "Unlit/Crosshair" {
 				v2f vert (appdata_t v)
 				{
 					v2f o;
-					o.vertex = UnityObjectToClipPos(v.vertex);
+					o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
 					o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 					o.color = v.color;
 					return o;

@@ -1,6 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Gizmo Line"
+﻿Shader "Gizmo Line"
 {
 	Properties
 	{
@@ -46,7 +44,7 @@ Shader "Gizmo Line"
 			vOutput vert(vInput input)
 			{
 				vOutput o;
-				o.clipPos = UnityObjectToClipPos(input.vertexPos);
+				o.clipPos = mul(UNITY_MATRIX_MVP, input.vertexPos);
 				o.color = input.vertexColor;
 
 				return o;
